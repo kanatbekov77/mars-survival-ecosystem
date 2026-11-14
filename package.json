@@ -1,0 +1,14 @@
+{
+  "name": "mars-survival-ecosystem",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "MARS: Survival Ecosystem — browser mission trainer (NASA Space Apps 2026)",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "build": "node tools/build.mjs",
+    "simulate": "node tools/simulate.mjs",
+    "serve": "node tools/serve.mjs"
+  },
+  "engines": { "node": ">=20" }
+}

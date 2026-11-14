@@ -1,0 +1,10 @@
+cadet    control      pass 100.0%  {"sustainable":200}  stops {}  minSoC 41.5  minWater 42.6  parts 2  harvest 1  missions 30.0/30  1038ms
+cadet    compromiseA  pass 100.0%  {"survived":200}  stops {}  minSoC 43.2  minWater 21.8  parts 2  harvest 2  missions 11.0/30  919ms
+cadet    compromiseB  pass 100.0%  {"survived":200}  stops {}  minSoC 43.5  minWater 39.9  parts 2  harvest 1  missions 12.0/30  878ms
+cadet    random       pass   5.0%  {"stop":190,"remote":9,"survived":1}  stops {"pCO2":189,"pO2":1}  minSoC 39.7  minWater 150.3  parts 1  harvest 0  missions 2.4/30  429ms
+cadet    error        pass   0.0%  {"stop":200}  stops {"pCO2":200}  minSoC 11.7  minWater 181.2  parts 0  harvest 0  missions 2.0/30  386ms
+engineer control      pass 100.0%  {"sustainable":200}  stops {}  minSoC 41.5  minWater 20.8  parts 2  harvest 1  missions 30.0/30  949ms
+engineer compromiseA  pass 100.0%  {"survived":200}  stops {}  minSoC 43.2  minWater 13.2  parts 2  harvest 1  missions 11.0/30  902ms
+engineer compromiseB  pass 100.0%  {"survived":200}  stops {}  minSoC 43.5  minWater 19.7  parts 2  harvest 1  missions 12.0/30  859ms
+engineer random       pass   4.0%  {"stop":192,"remote":7,"survived":1}  stops {"pCO2":191,"pO2":1}  minSoC 40.1  minWater 125.2  parts 1  harvest 0  missions 2.3/30  380ms
+engineer error        pass   0.0%  {"stop":200}  stops {"pCO2":200}  minSoC 11.8  minWater 156.2  parts 0  harvest 0  missions 2.0/30  364ms
