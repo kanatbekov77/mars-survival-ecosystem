@@ -35,7 +35,7 @@ export const ru = {
   'time.menu': 'Меню', 'time.paused': 'Пауза', 'time.running': 'Время идёт ×{x}', 'time.hidden': 'Вкладка скрыта — пауза',
 
   // map
-  'map.title': 'Карта базы', 'map.list': 'Системы списком',
+  'map.title': 'Карта базы', 'map.view': 'Вид карты', 'map.view.schema': 'Схема', 'map.view.iso': 'Объём', 'map.list': 'Системы списком',
   'sys.habitat': 'Жилой отсек', 'sys.greenhouse': 'Теплица', 'sys.battery': 'Батарея и сеть', 'sys.panels': 'Солнечные панели', 'sys.reserve': 'Резервный источник',
   'sys.water': 'Водный контур', 'sys.shelter': 'Убежище и доза', 'sys.comms': 'Связь', 'sys.storage': 'Склад и пища', 'sys.rover': 'Ровер',
   'status.ok': 'норма', 'status.warn': 'внимание', 'status.bad': 'тревога', 'status.off': 'выкл',

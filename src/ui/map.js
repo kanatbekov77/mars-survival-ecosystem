@@ -3,6 +3,7 @@ import { s, h, clear } from './dom.js';
 import { t } from '../i18n/index.js';
 import { slotOf, isLightSlot } from '../engine/config.js';
 import { SYSTEMS } from './status.js';
+import { renderIso } from './isomap.js';
 
 const POS = {
   panels: [130, 92], reserve: [300, 78], battery: [300, 196], habitat: [470, 232], greenhouse: [668, 214],
@@ -53,8 +54,7 @@ function art(id, st) {
   }
 }
 
-export function renderMap(container, st, status, { selected, onSelect, highlight = [] }) {
-  clear(container);
+function renderSchema(st, status, { selected, onSelect, highlight = [] }) {
   const slot = slotOf(st.tick);
   const night = !isLightSlot(slot);
   const L = st.energy.L;
@@ -92,7 +92,24 @@ export function renderMap(container, st, status, { selected, onSelect, highlight
   // dust overlay: opacity grows as light drops
   svg.append(s('rect', { x: 0, y: 0, width: 800, height: 450, class: 'dust', opacity: Math.max(0, (1 - L) * 0.75).toFixed(2), 'pointer-events': 'none' }));
   if (night) svg.append(s('rect', { x: 0, y: 0, width: 800, height: 450, class: 'nightshade', 'pointer-events': 'none' }));
-  container.append(svg);
+  return svg;
+}
+
+// Map view: 'iso' (pseudo-3D, default) or 'schema'. Same ids, statuses and handlers in both.
+export function renderMap(container, st, status, { selected, onSelect, highlight = [], view = 'iso', onView }) {
+  const hadToggleFocus = container.contains(document.activeElement) && document.activeElement.dataset.view;
+  clear(container);
+  const toggle = h('div', { class: 'mapbar' },
+    h('span', { class: 'mapbar-title', id: 'map-view-label' }, t('map.view')),
+    h('div', { class: 'seg', role: 'group', 'aria-labelledby': 'map-view-label' }, ['schema', 'iso'].map((v) => h('button', {
+      class: `segbtn ${view === v ? 'on' : ''}`, 'aria-pressed': view === v ? 'true' : 'false', 'data-view': v,
+      onclick: () => { if (view !== v) onView?.(v); },
+    }, t(`map.view.${v}`)))));
+  container.append(toggle);
+  const scene = h('div', { class: `mapscene view-${view}` });
+  scene.append(view === 'iso' ? renderIso(st, status, { selected, onSelect }) : renderSchema(st, status, { selected, onSelect, highlight }));
+  container.append(scene);
+  if (hadToggleFocus) container.querySelector(`[data-view="${hadToggleFocus}"]`)?.focus();
   // keyboard/list fallback
   const list = h('ul', { class: 'syslist', 'aria-label': t('map.list') }, SYSTEMS.map((id) => h('li', {},
     h('button', { class: `sysbtn st-${status[id]}${selected === id ? ' selected' : ''}`, onclick: () => onSelect(id), 'aria-pressed': selected === id ? 'true' : 'false' },

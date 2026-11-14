@@ -25,7 +25,7 @@ const store = {
 class App {
   constructor(root) {
     this.root = root;
-    this.prefs = { lang: 'ru', scale: 100, motion: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'reduced' : 'full', sound: 'on', subtitles: 'on', ...(store.get(PREFS_KEY) || {}) };
+    this.prefs = { lang: 'ru', mapView: 'iso', scale: 100, motion: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'reduced' : 'full', sound: 'on', subtitles: 'on', ...(store.get(PREFS_KEY) || {}) };
     this.applyPrefs();
     this.run = null; this.speed = 1; this.running = false; this.acc = 0; this.last = 0;
     this.selected = null; this.queue = []; this.decisionUI = null; this.logOpen = false;
@@ -181,7 +181,7 @@ class App {
     const fc = energyForecast(s);
     const status = systemStatus(s, fc);
     this.renderHud(s, fc);
-    renderMap(this.els.map, s, status, { selected: this.selected, onSelect: (id) => this.select(id), highlight: this.selected ? [this.selected] : [] });
+    renderMap(this.els.map, s, status, { selected: this.selected, onSelect: (id) => this.select(id), highlight: this.selected ? [this.selected] : [], view: this.prefs.mapView, onView: (v) => { this.prefs.mapView = v; this.applyPrefs(); this.update(); } });
     this.renderPanel(s);
     this.renderMission(s);
     if (this.logOpen) this.renderLog(s);
@@ -247,13 +247,13 @@ class App {
     const card = CARDS.find((c) => c.sol === sol) || CARDS.filter((c) => c.sol <= sol).slice(-1)[0];
     const cadet = s.profile === 'cadet';
     const hintShown = cadet || this.hintSol === sol || ['bad'].some(() => airAlarm(s));
-    M.append(
+    M.append(...[
       h('div', { class: 'mission-head' }, h('span', { class: 'act' }, `${t('mission.act', { n: m.act })} · ${t(`act.${m.act}`)}`), h('span', { class: `mstatus ${st}` }, t(`mission.${st}`))),
       h('h2', {}, `${sol}. ${t(`m.${sol}.t`)}`), h('p', {}, t(`m.${sol}.g`)),
       carry.length ? h('p', { class: 'carry' }, carry.map((n) => `↻ ${n}. ${t(`m.${n}.t`)}`).join(' · ')) : null,
       h('div', { class: 'beep' }, h('span', { class: 'beep-face', 'aria-hidden': 'true', html: BEEP_SVG }),
         hintShown && this.prefs.subtitles === 'on' ? h('p', {}, h('strong', {}, `${t('beep.name')}: `), t(`beep.${sol}`)) : h('button', { class: 'btn small', onclick: () => { this.hintSol = sol; this.update(); } }, t('mission.hint'))),
-      h('div', { class: 'row' }, card ? h('button', { class: 'btn small', onclick: () => this.showCard(card.id) }, `📘 ${t('card.open')}`) : null, s.job ? h('span', { class: 'jobpill' }, s.job.status === 'waiting' ? t('hud.jobWait', { name: t(`act.${s.job.action}.name`) }) : t('hud.job', { name: t(`act.${s.job.action}.name`), left: s.job.remaining })) : null));
+      h('div', { class: 'row' }, card ? h('button', { class: 'btn small', onclick: () => this.showCard(card.id) }, `📘 ${t('card.open')}`) : null, s.job ? h('span', { class: 'jobpill' }, s.job.status === 'waiting' ? t('hud.jobWait', { name: t(`act.${s.job.action}.name`) }) : t('hud.job', { name: t(`act.${s.job.action}.name`), left: s.job.remaining })) : null)].filter(Boolean));
   }
 
   renderLog(s) {
@@ -305,7 +305,8 @@ class App {
   hiddenPause() { if (this.running) { this.wasRunning = true; this.running = false; this.update(); } this.decisionUI?.pause(true); this.autosave(); }
 
   hotkeys(e) {
-    if (!this.run || !this.els || e.target.matches('input, select, textarea')) return;
+    if (!this.run || !this.els || e.target.closest?.('input, select, textarea, label')) return;
+    if ((e.key === ' ' || e.key === 'Enter') && e.target.closest?.('button, a, [role=button]')) return; // let focused controls handle activation
     if (modalOpen()) return;
     if (e.key === ' ') { e.preventDefault(); this.toggleRun(); }
     else if (e.key === '.') this.stepOnce();
@@ -411,7 +412,7 @@ class App {
       h('button', { class: 'btn', onclick: () => download(`mars-save-${this.run.meta.id}-S${solOf(this.run.state.tick)}.json`, JSON.stringify(this.run.toSave(this.decisionUI?.remaining?.()))) }, t('menu.export')),
       h('button', { class: 'btn', onclick: () => { m.close(); this.sources(() => this.startGame(false)); } }, t('menu.sources')),
       h('button', { class: 'btn', onclick: () => { m.close(); this.accessibility(() => this.startGame(false)); } }, t('menu.access')),
-      h('div', { class: 'lang' }, ['ru', 'en'].map((l) => h('button', { class: `segbtn ${getLang() === l ? 'on' : ''}`, onclick: () => { this.prefs.lang = l; this.applyPrefs(); m.close(); this.startGame(false); } }, l.toUpperCase()))),
+      h('div', { class: 'lang' }, ['ru', 'en'].map((l) => h('button', { class: `segbtn ${getLang() === l ? 'on' : ''}`, onclick: () => { const keep = this.selected; this.prefs.lang = l; this.applyPrefs(); m.close(); this.startGame(false); if (keep) { this.selected = keep; this.update(); } } }, l.toUpperCase()))),
       h('button', { class: 'btn', onclick: () => { this.autosave(); m.close(); this.menu(); } }, t('time.menu'))), { label: t('time.paused') });
   }
 

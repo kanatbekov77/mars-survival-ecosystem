@@ -1,31 +1,35 @@
-✔ RU and EN have identical key sets and no empty strings (1.919666ms)
-✔ every engine log/notice key used in campaign runs is translated (591.806875ms)
-✔ static t() keys in UI code exist (0.940208ms)
-✔ catalog keys: actions, reasons, techs, missions, Beep lines, cards (0.386625ms)
-✔ sources: every card source exists; archive records carry id, time, unit, retrieval date (0.109791ms)
-✔ the simulation never touches the network (0.491708ms)
-✔ four endings are reachable (99.555083ms)
-✔ error strategies: a visible alarm precedes every training stop (129.946667ms)
-✔ sha256 matches the standard vector (0.853458ms)
-✔ control atmosphere at init (§12) (0.340333ms)
-✔ oxygen stock arithmetic (§12) (0.052333ms)
-✔ night battery discharge and charge (§12) (0.283334ms)
-✔ storm single light tick cascade (§12) (0.147666ms)
-✔ reserve produces 123.3 kWh per sol (§12) (0.049833ms)
-✔ scrubber failure: 4th tick crosses 0.25 kPa (§12) (0.078ms)
-✔ electrolysis: 1 kg O2 ⇒ 1.125 kg water, 0.125 kg H2; zero at water guard (1.18775ms)
-✔ crop: 14 good light ticks = 1 effective sol; cold stops growth (1.110917ms)
-✔ micro-leak escalation canceled by patch before due; ×6 without repair (6.757041ms)
-✔ radiation: EVA > habitat > shelter for both components; flare class changes nothing (32.72ms)
-✔ determinism: same seed and commands ⇒ same state; replay equals live (81.255875ms)
-✔ save → load roundtrip and checksum guard (30.196166ms)
-✔ decision freezes the world; timer expiry logs Safe (3.656084ms)
-✔ terminal threshold on tick 719 beats cargo delivery (14.545125ms)
-✔ message without landCheck does not confirm the landing site (12.443875ms)
-✔ control strategy reaches a delivery ending on both profiles (18.887958ms)
-✔ forecast never mutates state nor reveals local rolls (13.947459ms)
-✔ EVA blocked in storm / SEP, diagnostics are token-free (D3) (0.102625ms)
-✔ mass balance: water accounted across tanks and sinks (6.109917ms)
+
+> mars-survival-ecosystem@0.1.0 test
+> node --test test/*.test.mjs
+
+✔ RU and EN have identical key sets and no empty strings (1.760583ms)
+✔ every engine log/notice key used in campaign runs is translated (576.624834ms)
+✔ static t() keys in UI code exist (4.439958ms)
+✔ catalog keys: actions, reasons, techs, missions, Beep lines, cards (0.387458ms)
+✔ sources: every card source exists; archive records carry id, time, unit, retrieval date (0.105125ms)
+✔ the simulation never touches the network (0.468542ms)
+✔ four endings are reachable (100.945917ms)
+✔ error strategies: a visible alarm precedes every training stop (126.151042ms)
+✔ sha256 matches the standard vector (1.061083ms)
+✔ control atmosphere at init (§12) (0.324125ms)
+✔ oxygen stock arithmetic (§12) (0.052ms)
+✔ night battery discharge and charge (§12) (0.276ms)
+✔ storm single light tick cascade (§12) (0.143292ms)
+✔ reserve produces 123.3 kWh per sol (§12) (0.047041ms)
+✔ scrubber failure: 4th tick crosses 0.25 kPa (§12) (0.077416ms)
+✔ electrolysis: 1 kg O2 ⇒ 1.125 kg water, 0.125 kg H2; zero at water guard (1.158584ms)
+✔ crop: 14 good light ticks = 1 effective sol; cold stops growth (1.165958ms)
+✔ micro-leak escalation canceled by patch before due; ×6 without repair (6.360375ms)
+✔ radiation: EVA > habitat > shelter for both components; flare class changes nothing (27.638125ms)
+✔ determinism: same seed and commands ⇒ same state; replay equals live (67.500083ms)
+✔ save → load roundtrip and checksum guard (31.664541ms)
+✔ decision freezes the world; timer expiry logs Safe (4.586416ms)
+✔ terminal threshold on tick 719 beats cargo delivery (14.871333ms)
+✔ message without landCheck does not confirm the landing site (8.625667ms)
+✔ control strategy reaches a delivery ending on both profiles (18.916292ms)
+✔ forecast never mutates state nor reveals local rolls (14.393125ms)
+✔ EVA blocked in storm / SEP, diagnostics are token-free (D3) (0.130708ms)
+✔ mass balance: water accounted across tanks and sinks (5.765042ms)
 ℹ tests 28
 ℹ suites 0
 ℹ pass 28
@@ -33,4 +37,4 @@
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 890.59325
+ℹ duration_ms 867.168834

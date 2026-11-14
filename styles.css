@@ -198,3 +198,58 @@ input[type=number], select { font: inherit; background: var(--bg2); color: var(-
   .stores { columns: 1; }
   .screen { padding: 12px; }
 }
+
+/* ---------- map view toggle + isometric (pseudo-3D) scene ---------- */
+.mapbar { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0 0 8px; }
+.mapbar-title { color: var(--muted); font-size: .9rem; }
+.mapscene { min-width: 0; }
+.isomap { width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line); background: #1d1020; }
+.isomap .ground-top-face { stroke: #c46a3e; stroke-width: 1; }
+.isomap .ground-side-l { fill: #4a1d10; } .isomap .ground-side-r { fill: #3a160c; }
+.isomap .crater { fill: #7d3218; opacity: .55; } .isomap .crater-in { fill: #a8492a; opacity: .45; }
+.iso-shadow { fill: #1a0804; opacity: .32; }
+.iso-box .face-top { fill: #c9d3dd; } .iso-box .face-left { fill: #8e9aa8; } .iso-box .face-right { fill: #6e7a88; }
+.iso-box polygon { stroke: #1d2b3a; stroke-width: .8; stroke-linejoin: round; }
+.rock .face-top { fill: #b5583a; } .rock .face-left { fill: #8d3f26; } .rock .face-right { fill: #6f2f1b; } .rock polygon { stroke: none; }
+.airlock .face-top { fill: #dfe6ee; }
+.dome-body { fill: #e8eef5; stroke: #7d8b9b; stroke-width: 1.5; }
+.dome-ring { fill: none; stroke: #aab6c4; stroke-width: 1.5; } .dome-shine { fill: none; stroke: #ffffff; stroke-width: 3; opacity: .55; stroke-linecap: round; }
+.win { fill: #5a6b80; } .win.lit { fill: #ffd98a; }
+.iso-crew { fill: #1d2b3a; font-weight: 800; font-size: 13px; }
+.gh-iso .gh-glass { fill: #7fe0a9; opacity: .32; stroke: #b6f0d1; stroke-width: 1; }
+.gh-iso.lit .gh-glass { fill: #c58cff; opacity: .38; } .gh-iso.dark .gh-glass { fill: #2e4a3a; opacity: .55; }
+.gh-rib { fill: none; stroke: #d6f5e4; stroke-width: 1.4; } .gh-end { fill: #b6f0d1; opacity: .25; stroke: #d6f5e4; stroke-width: 1.4; }
+.tray-iso .face-top { fill: #6b4b2c; } .tray-iso .face-left, .tray-iso .face-right { fill: #4c341e; } .tray-iso polygon { stroke: none; }
+.iso-leak { fill: var(--warn); font-size: 16px; font-weight: 800; }
+.pv-iso { fill: #22427a; stroke: #b8d4ff; stroke-width: 1.4; } .pv-folded .face-top { fill: #2a3346; }
+.iso-mast { stroke: #c9d3dd; stroke-width: 3; stroke-linecap: round; }
+.reserve-iso .face-top { fill: #8a6a48; } .reserve-iso .face-left { fill: #6a4f34; } .reserve-iso .face-right { fill: #574028; }
+.fin-iso .face-top, .fin-iso .face-left, .fin-iso .face-right { fill: #9aa6b4; }
+.bolt { fill: #6b5a3a; } .bolt.on { fill: #ffd36a; }
+.battery-iso .face-top { fill: #3a4e66; } .battery-iso .face-left { fill: #2b3a4d; } .battery-iso .face-right { fill: #223040; }
+.soc-track { fill: #0b1118; } .isomap .soc { fill: var(--ok); } .isomap .soc.low { fill: var(--bad); }
+.pad-iso .face-top { fill: #7b8794; }
+.berm .face-top { fill: #a65434; } .berm .face-left { fill: #7d3a22; } .berm .face-right { fill: #66301c; }
+.bunker-top .face-top { fill: #8d7a68; } .bunker-top .face-left { fill: #6b5a4b; } .bunker-top .face-right { fill: #574a3d; }
+.iso-cyl .cyl-side { fill: #6f7d8c; stroke: #1d2b3a; stroke-width: .8; } .iso-cyl .cyl-top { fill: #c9d3dd; stroke: #1d2b3a; stroke-width: .8; }
+.tank-clean .cyl-fill { fill: #5ab0ff; opacity: .8; } .tank-grey .cyl-fill { fill: #9aa5b1; opacity: .85; }
+.crate-iso .face-top { fill: #c49a5e; } .crate-iso .face-left { fill: #9b7442; } .crate-iso .face-right { fill: #805e33; }
+.cache-crate .face-top { fill: var(--accent); } .cache-crate .face-left { fill: #c4602f; } .cache-crate .face-right { fill: #a24d24; }
+.rover-iso .face-top { fill: #e3ded6; } .rover-iso .face-left { fill: #b5aea4; } .rover-iso .face-right { fill: #968f85; }
+.rover-cab .face-top { fill: #5ab0ff; }
+.flag-iso { fill: var(--accent); }
+.iso-x { fill: var(--bad); font-weight: 800; }
+.iso-link { stroke-width: 2.5; opacity: .5; } .iso-link.hot { opacity: 1; stroke-width: 4; }
+.iso-hit { fill: transparent; stroke: transparent; }
+.iso-node:hover .iso-hit { fill: #ffffff14; stroke: var(--accent2); stroke-width: 1.5; }
+.iso-selected { fill: #5ab0ff22; stroke: var(--accent2); stroke-width: 3; stroke-dasharray: 10 5; }
+.iso-ring { fill: none; stroke-width: 3; } .iso-ring.warn { stroke: var(--warn); stroke-dasharray: 6 5; } .iso-ring.bad { stroke: var(--bad); fill: #ff5d5d1c; animation: pulse 1.2s infinite; }
+.iso-node:focus-visible .iso-hit { stroke: var(--focus); stroke-width: 4; fill: #ffe06614; }
+.iso-tag { cursor: pointer; } .iso-tag .tag-text { font-size: 12.5px; }
+.iso-tag.selected rect { stroke: var(--accent2); stroke-width: 2; }
+.isomap.night .ground-top-face { filter: brightness(.7); }
+.isomap .streak { fill: none; stroke: #e0a57a; stroke-width: 2.5; opacity: .35; animation: drift 6s linear infinite; }
+@keyframes drift { from { transform: translateX(-60px); } to { transform: translateX(60px); } }
+[data-motion="reduced"] .isomap .streak, [data-motion="reduced"] .iso-ring.bad { animation: none !important; }
+@media (prefers-reduced-motion: reduce) { .isomap .streak, .iso-ring.bad { animation: none !important; } }
+@media (max-width: 600px) { .iso-tag .tag-text { font-size: 15px; } .mapbar { margin-bottom: 6px; } }

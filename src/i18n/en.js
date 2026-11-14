@@ -30,7 +30,7 @@ export const en = {
   'time.pause': 'Pause', 'time.play': 'Play', 'time.step': 'One tick', 'time.speed': 'Speed ×{x}', 'time.toDecision': 'To next decision', 'time.endSol': 'Finish sol',
   'time.menu': 'Menu', 'time.paused': 'Paused', 'time.running': 'Running ×{x}', 'time.hidden': 'Tab hidden — paused',
 
-  'map.title': 'Base map', 'map.list': 'Systems as a list',
+  'map.title': 'Base map', 'map.view': 'Map view', 'map.view.schema': 'Schema', 'map.view.iso': 'Volume', 'map.list': 'Systems as a list',
   'sys.habitat': 'Habitat', 'sys.greenhouse': 'Greenhouse', 'sys.battery': 'Battery and grid', 'sys.panels': 'Solar panels', 'sys.reserve': 'Reserve power unit',
   'sys.water': 'Water loop', 'sys.shelter': 'Shelter and dose', 'sys.comms': 'Communications', 'sys.storage': 'Storage and food', 'sys.rover': 'Rover',
   'status.ok': 'normal', 'status.warn': 'caution', 'status.bad': 'alarm', 'status.off': 'off',
