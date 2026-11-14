@@ -1,0 +1,191 @@
+{
+  "configVersion": "mars-config-0.1.0",
+  "seeds": 200,
+  "generatedUTC": "2026-11-14T12:07:26.464Z",
+  "rows": [
+    {
+      "profile": "cadet",
+      "strategy": "control",
+      "passRate": 1,
+      "outcomes": {
+        "sustainable": 200
+      },
+      "terminals": {},
+      "medianMinSoC": 41.54187810790961,
+      "medianMinWater": 42.55114588435038,
+      "medianPartsUsed": 2,
+      "medianHarvests": 1,
+      "medianAutopauses": 0,
+      "deadlinesMissed": 0,
+      "avgMissionsDone": 30,
+      "ms": 1038
+    },
+    {
+      "profile": "cadet",
+      "strategy": "compromiseA",
+      "passRate": 1,
+      "outcomes": {
+        "survived": 200
+      },
+      "terminals": {},
+      "medianMinSoC": 43.21712946660524,
+      "medianMinWater": 21.791357944941275,
+      "medianPartsUsed": 2,
+      "medianHarvests": 2,
+      "medianAutopauses": 1,
+      "deadlinesMissed": 0,
+      "avgMissionsDone": 11,
+      "ms": 919
+    },
+    {
+      "profile": "cadet",
+      "strategy": "compromiseB",
+      "passRate": 1,
+      "outcomes": {
+        "survived": 200
+      },
+      "terminals": {},
+      "medianMinSoC": 43.52984305356179,
+      "medianMinWater": 39.90852631513849,
+      "medianPartsUsed": 2,
+      "medianHarvests": 1,
+      "medianAutopauses": 0,
+      "deadlinesMissed": 0,
+      "avgMissionsDone": 12,
+      "ms": 878
+    },
+    {
+      "profile": "cadet",
+      "strategy": "random",
+      "passRate": 0.05,
+      "outcomes": {
+        "stop": 190,
+        "remote": 9,
+        "survived": 1
+      },
+      "terminals": {
+        "pCO2": 189,
+        "pO2": 1
+      },
+      "medianMinSoC": 39.74708366168478,
+      "medianMinWater": 150.25593593970464,
+      "medianPartsUsed": 1,
+      "medianHarvests": 0,
+      "medianAutopauses": 1,
+      "deadlinesMissed": 8,
+      "avgMissionsDone": 2.395,
+      "ms": 429
+    },
+    {
+      "profile": "cadet",
+      "strategy": "error",
+      "passRate": 0,
+      "outcomes": {
+        "stop": 200
+      },
+      "terminals": {
+        "pCO2": 200
+      },
+      "medianMinSoC": 11.723855423589079,
+      "medianMinWater": 181.20690594164125,
+      "medianPartsUsed": 0,
+      "medianHarvests": 0,
+      "medianAutopauses": 3,
+      "deadlinesMissed": 0,
+      "avgMissionsDone": 2,
+      "ms": 386
+    },
+    {
+      "profile": "engineer",
+      "strategy": "control",
+      "passRate": 1,
+      "outcomes": {
+        "sustainable": 200
+      },
+      "terminals": {},
+      "medianMinSoC": 41.54187810790961,
+      "medianMinWater": 20.828533333333333,
+      "medianPartsUsed": 2,
+      "medianHarvests": 1,
+      "medianAutopauses": 2,
+      "deadlinesMissed": 0,
+      "avgMissionsDone": 30,
+      "ms": 949
+    },
+    {
+      "profile": "engineer",
+      "strategy": "compromiseA",
+      "passRate": 1,
+      "outcomes": {
+        "survived": 200
+      },
+      "terminals": {},
+      "medianMinSoC": 43.21712946660524,
+      "medianMinWater": 13.21506808197995,
+      "medianPartsUsed": 2,
+      "medianHarvests": 1,
+      "medianAutopauses": 3,
+      "deadlinesMissed": 0,
+      "avgMissionsDone": 11,
+      "ms": 902
+    },
+    {
+      "profile": "engineer",
+      "strategy": "compromiseB",
+      "passRate": 1,
+      "outcomes": {
+        "survived": 200
+      },
+      "terminals": {},
+      "medianMinSoC": 43.52984305356179,
+      "medianMinWater": 19.739520462499996,
+      "medianPartsUsed": 2,
+      "medianHarvests": 1,
+      "medianAutopauses": 2,
+      "deadlinesMissed": 0,
+      "avgMissionsDone": 12,
+      "ms": 859
+    },
+    {
+      "profile": "engineer",
+      "strategy": "random",
+      "passRate": 0.04,
+      "outcomes": {
+        "stop": 192,
+        "remote": 7,
+        "survived": 1
+      },
+      "terminals": {
+        "pCO2": 191,
+        "pO2": 1
+      },
+      "medianMinSoC": 40.082133933423904,
+      "medianMinWater": 125.23298053139042,
+      "medianPartsUsed": 1,
+      "medianHarvests": 0,
+      "medianAutopauses": 1,
+      "deadlinesMissed": 5,
+      "avgMissionsDone": 2.33,
+      "ms": 380
+    },
+    {
+      "profile": "engineer",
+      "strategy": "error",
+      "passRate": 0,
+      "outcomes": {
+        "stop": 200
+      },
+      "terminals": {
+        "pCO2": 200
+      },
+      "medianMinSoC": 11.816773054060072,
+      "medianMinWater": 156.20690594164125,
+      "medianPartsUsed": 0,
+      "medianHarvests": 0,
+      "medianAutopauses": 3,
+      "deadlinesMissed": 0,
+      "avgMissionsDone": 2,
+      "ms": 364
+    }
+  ]
+}
